@@ -18,6 +18,7 @@ import java.util.Collections;
 
 public class MaxMinValue {
 
+    //split한 배열 for문으로 하나씩 읽어오면서 최대값 최솟값 즉시 비교.
     public static String getMaxMinValue(String str) {
 
         String[] tmp = str.split(" ");// 공백 문자열 split
@@ -35,10 +36,27 @@ public class MaxMinValue {
         return min + " " + max;
     }
 
+    //Arrays.sort 를 이용하여 오름차순 정렬 후 첫 값과 끝 값으로 처리
+    public static String getMaxMinValue_sort(String str){
+        String[] tmp = str.split(" ");// 공백 문자열 split
+        int[] arr = new int[tmp.length];
+
+        //String 형태에서 int로 변환 후 int 배열 요소로 넣어주기
+        for(int i = 0; i< tmp.length; i++ ){
+            arr[i] = Integer.parseInt(tmp[i]);
+        }
+
+        Arrays.sort(arr); // 오름차순 정렬
+
+        return arr[0] + " " + arr[tmp.length -1] ; // 오름차순 정렬 후 첫 값, 끝 값 출력.
+
+    }
+
     public static void main(String[] args) {
         String str = "1 3 2 4";
 
         System.out.println(getMaxMinValue(str));
+        System.out.println(getMaxMinValue_sort(str));
     }
 }
 
